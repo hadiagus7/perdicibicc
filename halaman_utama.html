@@ -23,9 +23,30 @@
 		.col {
 		  background-color: #ccc;
 		}
-		@media only screen and (max-width: 960px) {
+		@media only screen and (max-width: 768px) {
 			.badges{
 				display: block;
+			}
+			.header-mobile{
+				position:fixed;
+				top:0;
+				width:100%;
+				height:83px;
+				background-color: #fff;
+				z-index:9;
+			}
+			.sidebar, .main-menu{
+				margin-top:40px !important;
+			}
+			.logout-container{
+			padding: 8px;
+			text-align: center;
+			}
+			.sidebar-toggle-md{
+				margin-left: 10px;
+			}
+			.status-toggle-md{
+				margin-right: 10px;
 			}
 		}
 		.list-color:active {
@@ -98,16 +119,17 @@
 		<!-- </div> -->
 		<!-- d-none d-md-block -->
 		<div class="col-12 col-md-3 col bg-white pt-0 vh-100  leftpanel px-0">
-			<div class="d-flex justify-content-center logo position-relative">
-			<button type="" class="sidebar-toggle-md btn-sm btn-light shadow-sm mt-2 rounded-circle position-absolute top-0 start-0 "><i class="btn-toggle bi bi-chevron-left "></i></button>
-		<!-- <img src="assets/img/Logo1.jpg" class="logo1 d-block img-responsive" style="max-width:80px;" alt="..."> -->
-			<img src="assets/img/Logo_Badge.jpg" class="logo1 d-none img-responsive" style="max-width:100%;" alt="...">
-			<img src="assets/img/Logo.jpg" class="logo2 d-block img-responsive" style="max-width:100%;" alt="...">
-			<button type="" class="status-toggle-md btn-sm btn-light shadow-sm mt-2 rounded-circle position-absolute top-0 end-0 "><i class="btn-toggle bi bi-chevron-left "></i></button>
+			<div class="header-mobile">
+				<div class="d-flex justify-content-center logo position-relative">
+					<button type="" class="sidebar-toggle-md btn-sm btn-warning shadow-sm mt-2 rounded-circle position-absolute top-0 start-0 mt-3"><i class="btn-menu-toggle bi bi-list "></i></button>
+				<!-- <img src="assets/img/Logo1.jpg" class="logo1 d-block img-responsive" style="max-width:80px;" alt="..."> -->
+					<img src="assets/img/Logo_Badge.jpg" class="logo1 d-none img-responsive" style="max-width:100%;" alt="...">
+					<img src="assets/img/Logo.jpg" class="logo2 d-block img-responsive" style="max-width:100%;" alt="...">
+					<button type="" class="status-toggle-md btn-sm btn-primary shadow-sm mt-2 rounded-circle position-absolute top-0 end-0 mt-3"><i class="btn-status-toggle bi bi-person-fill"></i></button>
 
+				</div>
+				<hr class="mb-0 shadow">
 			</div>
-			<hr class="mb-0 shadow">
-		
 			<div class="bg-white sidebar mt-2" style="overflow-x:auto" >
 				<div class="list-group p-0" >
 					<a href="#" class="list-group-item list-group-item-action border-0 ps-3 list-color">
@@ -245,9 +267,9 @@
 					
 				</div>
 			</div>
-			<div class="d-box justify-content-center bg-lights  position-relative">
+			<div class="d-box justify-content-center bg-lights logout-container position-relative">
 					<a href="#">
-						<span class="d-box sidebar-icon position-fixed bottom-0 start-0 logout">
+						<span class="d-box sidebar-icon logout position-fixed bottom-0 start-0">
 							<span class="d-inline-flex text-white rounded me-2" style=""><div class="circle mx-1 bg-primary"><i class="bi bi-arrow-right-circle"></i></div></span>
 							<span class="nav-text d-inline-flex align-items-center text-primary">Logout</span>
 						</span>
@@ -260,8 +282,8 @@
 						<!-- </span> -->
 			<!-- </div> -->
 		</div>
-		<div class="col-md-9 col bg-lights">
-			<div class="row bg-white pt-2 mt-0 pb-3 shadow-sm header">
+		<div class="d-block col-md-9 col bg-lights main-menu">
+			<div class="row bg-white pt-2 mt-0 pb-2 shadow-sm header">
 				<div class="col-12 " >
 				
 				<table class="table-sm table-borderless w-100 d-block d-md-table mb-0">
@@ -270,14 +292,20 @@
 							<td rowspan="3" class="col-1">
 							<button type="" class="sidebar-toggle btn-sm btn-light shadow-sm mt-2 rounded-circle position-absolute top-30 start-25 translate-middle-x"><i class="btn-toggle bi bi-chevron-left "></i></button>
 	
-							<span class="d-flex align-items-center link-dark text-decoration-none ps-4 pt-1">
+							<span class="d-flex align-items-center link-dark text-decoration-none ps-4 pt-1 photo-profile">
 								<img src="https://github.com/mdo.png" alt="" width="54" height="54" class="rounded-circle me-2 border border-primary">
 							</span>
 							</td>
-							<td colspan="2" class="col-2">
-								<p class="mb-0 small fw-bolder">Deasy Ratnasari</p>
+							<td colspan="3" class="col-2">
+								<p class="mb-0 small fw-bolder">Susilo Bambang Yudhoyono</p>
 							</td>
-							<td rowspan="2" class="col-4">
+						</tr>
+						<tr>
+							<td class="col-3">
+								<p class="mb-0" style="font-size:10pt">General Particioner</p>
+							</td>
+							<td style="font-size:10pt">Progres Modul 1/8</td>
+							<td  class="col-5">
 								<span class="badges" style="float:right">
 									<img src="assets/img/Badges_1.png" style="max-width:28px; max-height:28px;" class="img-responsive"></img>
 									<img src="assets/img/Badges_2.png" style="max-width:28px; max-height:28px; opacity:0.25;" class="img-responsive"></img>
@@ -286,12 +314,6 @@
 									<img src="assets/img/Badges_5.png" style="max-width:28px; max-height:28px; opacity:0.25;" class="img-responsive"></img>
 									</span>
 							</td>
-						</tr>
-						<tr>
-							<td class="col-3">
-								<p class="mb-0" style="font-size:10pt">General Particioner</p>
-							</td>
-							<td style="font-size:10pt">Progres Modul 1/8</td>
 						</tr>
 						</tr>
 							<td class="col-3">
@@ -306,6 +328,48 @@
 						</tr>
 					  </tbody>
 				</table>
+				<!-- <table class="table-sm table-borderless w-100 d-block d-md-table mb-0"> -->
+					  <!-- <tbody> -->
+						<!-- <tr> -->
+							<!-- <td rowspan="3" class="col-1"> -->
+							<!-- <button type="" class="sidebar-toggle btn-sm btn-light shadow-sm mt-2 rounded-circle position-absolute top-30 start-25 translate-middle-x"><i class="btn-toggle bi bi-chevron-left "></i></button> -->
+	
+							<!-- <span class="d-flex align-items-center link-dark text-decoration-none ps-4 pt-1 photo-profile"> -->
+								<!-- <img src="https://github.com/mdo.png" alt="" width="54" height="54" class="rounded-circle me-2 border border-primary"> -->
+							<!-- </span> -->
+							<!-- </td> -->
+							<!-- <td colspan="2" class="col-2"> -->
+								<!-- <p class="mb-0 small fw-bolder">Susilo Bambang Yudhoyono</p> -->
+							<!-- </td> -->
+							<!-- <td rowspan="2" class="col-5"> -->
+								<!-- <span class="badges" style="float:right"> -->
+									<!-- <img src="assets/img/Badges_1.png" style="max-width:28px; max-height:28px;" class="img-responsive"></img> -->
+									<!-- <img src="assets/img/Badges_2.png" style="max-width:28px; max-height:28px; opacity:0.25;" class="img-responsive"></img> -->
+									<!-- <img src="assets/img/Badges_3.png" style="max-width:28px; max-height:28px; opacity:0.25;" class="img-responsive"></img> -->
+									<!-- <img src="assets/img/Badges_4.png" style="max-width:28px; max-height:28px; opacity:0.25;" class="img-responsive"></img> -->
+									<!-- <img src="assets/img/Badges_5.png" style="max-width:28px; max-height:28px; opacity:0.25;" class="img-responsive"></img> -->
+									<!-- </span> -->
+							<!-- </td> -->
+						<!-- </tr> -->
+						<!-- <tr> -->
+							<!-- <td class="col-3"> -->
+								<!-- <p class="mb-0" style="font-size:10pt">General Particioner</p> -->
+							<!-- </td> -->
+							<!-- <td style="font-size:10pt">Progres Modul 1/8</td> -->
+						<!-- </tr> -->
+						<!-- </tr> -->
+							<!-- <td class="col-3"> -->
+								<!-- <p class="mb-0" style="font-size:8pt">Angkatan 23</p> -->
+							<!-- </td> -->
+							<!-- <td colspan="2"> -->
+							
+								<!-- <div class="progress"> -->
+								  <!-- <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div> -->
+								<!-- </div> -->
+							<!-- </td> -->
+						<!-- </tr> -->
+					  <!-- </tbody> -->
+				<!-- </table> -->
 				</div>
 			</div>
 			<div class="row">
@@ -350,6 +414,7 @@
 		if ($(window).width() <= 768) { 
 				$(".table-sm").addClass("table-primaryoptimusr");
 				$(".sidebar").addClass("d-none");
+				$(".logout-container").removeClass("position-relative");
 			}
 		});
 
@@ -362,6 +427,10 @@
 				<!-- $(".logo").addClass("d-box position-fixed top-0 start-0 translate-middle"); -->
 				<!-- $(".logo").css("position", "position-fixed bottom-0 start-0"); -->
 				$(".sidebar").css("height", "auto");
+				$(".logout").removeClass("position-fixed");
+				$(".logout").removeClass("start-0");
+				$(".logout").removeClass("bottom-0");
+				$(".photo-profile").removeClass("ps-4");
 			}
 
 	  $(".sidebar-toggle").click(function(){
@@ -410,31 +479,69 @@
 		  $(".logout").width($(".sidebar").width()).css
 	  }
 	});  
+	
+	
+	
 	$(".sidebar-toggle-md").click(function(){
 	  var columns_container = $(".dynamic-columns");
+	  var header = $(".header");
 	  if (!columns_container.hasClass("expanded")) {
+	  		  if (header.hasClass("d-block")) {
+				columns_container.toggleClass("expanded2");
+				$(".btn-status-toggle").removeClass("bi-person");
+				$(".btn-status-toggle").addClass("bi-person-fill");
+		  }	
 		$(".sidebar").removeClass("d-none");
 		$(".sidebar").addClass("d-block");
+		$(".header").removeClass("d-block");
+		$(".header").addClass("d-none");
 		columns_container.toggleClass("expanded");
+		$(".main-menu").addClass("d-none");
+		$(".btn-menu-toggle").removeClass("bi-list");
+		$(".btn-menu-toggle").addClass("bi-list-ul");
+		$(".sidebar").scrollTop(300);
 	  }
 	  else {
 		$(".sidebar").removeClass("d-block");
 		$(".sidebar").addClass("d-none");
-		columns_container.toggleClass("expanded");		
+		columns_container.toggleClass("expanded");	
+		$(".main-menu").removeClass("d-none");
+		$(".btn-menu-toggle").removeClass("bi-list-ul");
+		$(".btn-menu-toggle").addClass("bi-list");
+		$(".sidebar").scrollTop(300);
+
 	  }
 	});
 	
 	$(".status-toggle-md").click(function(){
 	  var columns_container = $(".dynamic-columns");
-	  if (!columns_container.hasClass("expanded2")) {
+	  var sidebar = $(".sidebar");
+	  if (!columns_container.hasClass("expanded2")) {	  
+		  if (sidebar.hasClass("d-block")) {
+			columns_container.toggleClass("expanded");
+		$(".main-menu").removeClass("d-none");
+		$(".btn-menu-toggle").removeClass("bi-list-ul");
+		$(".btn-menu-toggle").addClass("bi-list");
+		  }	
 		$(".header").removeClass("d-none");
 		$(".header").addClass("d-block");
+		$(".sidebar").removeClass("d-block");
+		$(".sidebar").addClass("d-none");
 		columns_container.toggleClass("expanded2");
+		$(".btn-status-toggle").removeClass("bi-person-fill");
+		$(".btn-status-toggle").addClass("bi-person");
+		$(".sidebar").scrollTop(300);
 	  }
 	  else {
 		$(".header").removeClass("d-block");
 		$(".header").addClass("d-none");
-		columns_container.toggleClass("expanded2");		
+		columns_container.toggleClass("expanded2");	
+		$(".btn-status-toggle").removeClass("bi-person");
+		$(".btn-status-toggle").addClass("bi-person-fill");
+		$(".sidebar").scrollTop(300);
+		  <!-- if (!columns_container.hasClass("expanded")) { -->
+			<!-- columns_container.toggleClass("expanded"); -->
+		  <!-- }	 -->
 	  }
 	});
 	</script>

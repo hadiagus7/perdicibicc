@@ -35,8 +35,12 @@
 				background-color: #fff;
 				z-index:9;
 			}
-			.sidebar, .main-menu{
-				margin-top:40px !important;
+			.sidebar, .main-menu, .leftpanel{
+				margin-top:20px !important;
+				width:100% !important;
+			}
+			.sidebar{
+				margin-top:63px !important;
 			}
 			.logout-container{
 			padding: 8px;
@@ -91,7 +95,7 @@
 		}
 	</style>
   </head>
-  <body class="bg-light">
+  <body class="bg-light" id="top">
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -121,17 +125,17 @@
 		<div class="col-12 col-md-3 col bg-white pt-0 vh-100  leftpanel px-0">
 			<div class="header-mobile">
 				<div class="d-flex justify-content-center logo position-relative">
-					<button type="" class="sidebar-toggle-md btn-sm btn-warning shadow-sm mt-2 rounded-circle position-absolute top-0 start-0 mt-3"><i class="btn-menu-toggle bi bi-list "></i></button>
+					<button type="" class="sidebar-toggle-md d-none btn-sm btn-warning shadow-sm mt-2 rounded-circle position-absolute top-0 start-0 mt-3"><i class="btn-menu-toggle bi bi-list "></i></button>
 				<!-- <img src="assets/img/Logo1.jpg" class="logo1 d-block img-responsive" style="max-width:80px;" alt="..."> -->
 					<img src="assets/img/Logo_Badge.jpg" class="logo1 d-none img-responsive" style="max-width:100%;" alt="...">
 					<img src="assets/img/Logo.jpg" class="logo2 d-block img-responsive" style="max-width:100%;" alt="...">
-					<button type="" class="status-toggle-md btn-sm btn-primary shadow-sm mt-2 rounded-circle position-absolute top-0 end-0 mt-3"><i class="btn-status-toggle bi bi-person-fill"></i></button>
+					<button type="" class="status-toggle-md d-none btn-sm btn-primary shadow-sm mt-2 rounded-circle position-absolute top-0 end-0 mt-3"><i class="btn-status-toggle bi bi-person-fill"></i></button>
 
 				</div>
 				<hr class="mb-0 shadow">
 			</div>
-			<div class="bg-white sidebar mt-2" style="overflow-x:auto" >
-				<div class="list-group p-0" >
+			<div class="bg-white sidebar mt-2" style="overflow-x:auto" id="list-group-container" >
+				<div class="list-group p-0" id="list-group">
 					<a href="#" class="list-group-item list-group-item-action border-0 ps-3 list-color">
 						<span class="d-flex sidebar-icon">
 							<span class="d-inline-flex text-white rounded me-2" style=""><img src="assets/img/pengumuman.png" class="" style="max-width:32px; max-height:32px;" alt="..."></span>
@@ -282,7 +286,7 @@
 						<!-- </span> -->
 			<!-- </div> -->
 		</div>
-		<div class="d-block col-md-9 col bg-lights main-menu">
+		<div class="d-block col col-12 col-md-9 bg-lights main-menu">
 			<div class="row bg-white pt-2 mt-0 pb-2 shadow-sm header">
 				<div class="col-12 " >
 				
@@ -296,15 +300,15 @@
 								<img src="https://github.com/mdo.png" alt="" width="54" height="54" class="rounded-circle me-2 border border-primary">
 							</span>
 							</td>
-							<td colspan="3" class="col-2">
+							<td colspan="3" >
 								<p class="mb-0 small fw-bolder">Susilo Bambang Yudhoyono</p>
 							</td>
 						</tr>
 						<tr>
-							<td class="col-3">
+							<td class="col-2">
 								<p class="mb-0" style="font-size:10pt">General Particioner</p>
 							</td>
-							<td style="font-size:10pt">Progres Modul 1/8</td>
+							<td class="col-3"><p class="small mb-0">Progress Modul 1/8</p></td>
 							<td  class="col-5">
 								<span class="badges" style="float:right">
 									<img src="assets/img/Badges_1.png" style="max-width:28px; max-height:28px;" class="img-responsive"></img>
@@ -316,7 +320,7 @@
 							</td>
 						</tr>
 						</tr>
-							<td class="col-3">
+							<td class="col-2">
 								<p class="mb-0" style="font-size:8pt">Angkatan 23</p>
 							</td>
 							<td colspan="2">
@@ -396,36 +400,61 @@
   <script>
 	  $(document).ready(function(){
 		  $(".sidebar").height($(".mainbar").height()).css
-		  $(".logout").width($(".sidebar").width()).css
-		  
+		  $(".logout").width($(".sidebar").width()).css		  
 		  //fungsi responsive
-			if ($(window).width() <= 768) { 
+			if ($(window).width() <= 751) { 
 				responsiveView();
 			}
+			
 		});
 		
 		$( window ).resize(function() {
-		  $(".sidebar").height($(".mainbar").height()).css
-		  $(".logout").width($(".sidebar").width()).css
-		var divHeight = $('.header').height();
-		  $(".sidebar").height($('.parentrow').height() - divHeight -42).css
-		
-// fungsi responsive
-		if ($(window).width() <= 768) { 
-				$(".table-sm").addClass("table-primaryoptimusr");
-				$(".sidebar").addClass("d-none");
-				$(".logout-container").removeClass("position-relative");
+				<!-- $(".main-menu").removeClass("d-none"); -->
+			<!-- if ($(window).width() <= 768) {  -->
+			<!-- $(".btn-menu-toggle").addClass("bi-list-ul"); -->
+			<!-- } -->
+			 if ($(".btn-menu-toggle").hasClass("bi-list-ul")) {
+				
+			if ($(window).width() >= 751) { 
+				<!-- $(".sidebar").addClass("d-none"); -->
+				<!-- $(".logout-container").removeClass("position-relative"); -->
+				$(".sidebar-toggle-md").click();
+				<!-- $(".sidebar-toggle-md").click(); -->
 			}
+		  }	
+			 if (($(".btn-toggle").hasClass("bi-chevron-right"))&& ($(window).width() <= 751)) {
+				$(".sidebar-toggle").click();
+		  }	
+		  $(".sidebar").height($(".mainbar").height()).css
+			var divHeight = $('.header').height();
+		  $(".sidebar").height($('.parentrow').height() - divHeight -42).css
+			if ($(window).width() <= 751) { 
+				<!-- $(".sidebar").addClass("d-none"); -->
+				<!-- $(".logout-container").removeClass("position-relative"); -->
+				responsiveView();
+				<!-- $(".sidebar").removeClass("d-none"); -->
+				<!-- $(".sidebar-toggle-md").click(); -->
+			}
+			if ($(window).width() > 751) { 
+				<!-- $(".sidebar").addClass("d-none"); -->
+				<!-- $(".logout-container").removeClass("position-relative"); -->
+				desktopView();
+			}
+		  $(".logout").width($(".sidebar").width()).css
 		});
 
 		function responsiveView(){
-				$(".leftpanel").removeClass("vh-100");
+				$(".leftpanel").removeClass("vh-100"); 
+				if ($(".btn-menu-toggle").hasClass("bi-list")) {
 				$(".sidebar").addClass("d-none");
+				}	
 				$(".sidebar-toggle").addClass("d-none");
+				$(".sidebar-toggle-md").removeClass("d-none");
+				$(".status-toggle-md").removeClass("d-none");
+				
+				if ($(".btn-status-toggle").hasClass("bi-person-fill")) {
 				$(".header").addClass("d-none");
-				<!-- $(".leftpanel").addClass("d-box position-relative"); -->
-				<!-- $(".logo").addClass("d-box position-fixed top-0 start-0 translate-middle"); -->
-				<!-- $(".logo").css("position", "position-fixed bottom-0 start-0"); -->
+				}	
 				$(".sidebar").css("height", "auto");
 				$(".logout").removeClass("position-fixed");
 				$(".logout").removeClass("start-0");
@@ -433,14 +462,28 @@
 				$(".photo-profile").removeClass("ps-4");
 			}
 
+		function desktopView(){
+				$(".leftpanel").addClass("vh-100");
+				$(".sidebar").removeClass("d-none");
+				$(".sidebar-toggle").removeClass("d-none");
+				$(".sidebar-toggle-md").addClass("d-none");
+				$(".status-toggle-md").addClass("d-none");
+				$(".header").removeClass("d-none");
+				$(".sidebar").height($(".mainbar").height()).css
+				$(".logout").addClass("position-fixed");
+				$(".logout").addClass("start-0");
+				$(".logout").addClass("bottom-0");
+				$(".photo-profile").addClass("ps-4");
+			}
+
+
+// tombol tonggle minimize large
 	  $(".sidebar-toggle").click(function(){
 	  var columns_container = $(".dynamic-columns");
 	  if (!columns_container.hasClass("expanded")) {
 		$(".dynamic-columns .col:first").removeClass("col-md-3");
-		$(".dynamic-columns .col:first").addClass("col-md-1");
-		
-		$(".dynamic-columns .col:last-child").addClass("col-md-11");
-		
+		$(".dynamic-columns .col:first").addClass("col-md-1");		
+		$(".dynamic-columns .col:last-child").addClass("col-md-11");		
 		$(".logo2").removeClass("d-block");
 		$(".logo2").addClass("d-none");
 		$(".logo1").removeClass("d-none");
@@ -453,17 +496,13 @@
 		$(".nav-text").addClass("d-none");
 		$(".sidebar-icon").addClass("justify-content-center");
 		var divHeight = $('.header').height();
-		<!-- $('.sidebar').css('min-height', divHeight+'px'); -->
 		  $(".sidebar").height($('.parentrow').height() - divHeight -42).css
 		  $(".logout").width($(".sidebar").width()).css
 	  }
 	  else {
-		  <!-- $(".sidebar").height($(".mainbar").height()).css -->
 		$(".dynamic-columns .col:first").removeClass("col-md-1");
-		$(".dynamic-columns .col:first").addClass("col-md-3");
-		
-		$(".dynamic-columns .col:last-child").removeClass("col-md-11");
-		
+		$(".dynamic-columns .col:first").addClass("col-md-3");		
+		$(".dynamic-columns .col:last-child").removeClass("col-md-11");		
 		$(".logo2").addClass("d-block");
 		$(".logo2").removeClass("d-none");
 		$(".logo1").removeClass("d-block");
@@ -481,7 +520,7 @@
 	});  
 	
 	
-	
+	// tombol menu kiri mobile
 	$(".sidebar-toggle-md").click(function(){
 	  var columns_container = $(".dynamic-columns");
 	  var header = $(".header");
@@ -499,7 +538,8 @@
 		$(".main-menu").addClass("d-none");
 		$(".btn-menu-toggle").removeClass("bi-list");
 		$(".btn-menu-toggle").addClass("bi-list-ul");
-		$(".sidebar").scrollTop(300);
+		<!-- $('body, html, #list-group-container').scrollTop(0); -->
+		document.getElementById('top').scrollIntoView();
 	  }
 	  else {
 		$(".sidebar").removeClass("d-block");
@@ -508,11 +548,11 @@
 		$(".main-menu").removeClass("d-none");
 		$(".btn-menu-toggle").removeClass("bi-list-ul");
 		$(".btn-menu-toggle").addClass("bi-list");
-		$(".sidebar").scrollTop(300);
 
 	  }
 	});
 	
+	// tombol status kanan mobile
 	$(".status-toggle-md").click(function(){
 	  var columns_container = $(".dynamic-columns");
 	  var sidebar = $(".sidebar");
@@ -530,7 +570,8 @@
 		columns_container.toggleClass("expanded2");
 		$(".btn-status-toggle").removeClass("bi-person-fill");
 		$(".btn-status-toggle").addClass("bi-person");
-		$(".sidebar").scrollTop(300);
+		<!-- $('body, html, #list-group-container').scrollTop(0); -->
+		document.getElementById('top').scrollIntoView();
 	  }
 	  else {
 		$(".header").removeClass("d-block");
@@ -538,10 +579,6 @@
 		columns_container.toggleClass("expanded2");	
 		$(".btn-status-toggle").removeClass("bi-person");
 		$(".btn-status-toggle").addClass("bi-person-fill");
-		$(".sidebar").scrollTop(300);
-		  <!-- if (!columns_container.hasClass("expanded")) { -->
-			<!-- columns_container.toggleClass("expanded"); -->
-		  <!-- }	 -->
 	  }
 	});
 	</script>
